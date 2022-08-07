@@ -1,7 +1,7 @@
-package com.xml.yaml.converter.model.impl;
+package com.xml.yaml.converter.model.service.impl;
 
-import com.xml.yaml.converter.model.FileService;
-import com.xml.yaml.converter.model.ParsingService;
+import com.xml.yaml.converter.model.service.FileService;
+import com.xml.yaml.converter.model.service.ParsingService;
 import com.xml.yaml.converter.model.exception.AlreadyExistingYamlException;
 import com.xml.yaml.converter.model.exception.FileSystemException;
 

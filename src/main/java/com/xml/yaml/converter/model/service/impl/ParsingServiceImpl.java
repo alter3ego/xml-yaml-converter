@@ -1,6 +1,6 @@
-package com.xml.yaml.converter.model.impl;
+package com.xml.yaml.converter.model.service.impl;
 
-import com.xml.yaml.converter.model.ParsingService;
+import com.xml.yaml.converter.model.service.ParsingService;
 import com.xml.yaml.converter.model.exception.FileSystemException;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;

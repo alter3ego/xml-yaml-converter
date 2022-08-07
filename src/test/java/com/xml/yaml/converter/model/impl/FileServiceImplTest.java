@@ -1,6 +1,7 @@
 package com.xml.yaml.converter.model.impl;
 
-import com.xml.yaml.converter.model.FileService;
+import com.xml.yaml.converter.model.service.FileService;
+import com.xml.yaml.converter.model.service.impl.FileServiceImpl;
 import org.junit.jupiter.api.Test;
 
 import java.io.BufferedReader;

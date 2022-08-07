@@ -1,4 +1,4 @@
-package com.xml.yaml.converter.model;
+package com.xml.yaml.converter.model.service;
 
 import java.io.File;
 

@@ -1,6 +1,6 @@
 package com.xml.yaml.converter.controller.command;
 
-import com.xml.yaml.converter.model.FileService;
+import com.xml.yaml.converter.model.service.FileService;
 import com.xml.yaml.converter.view.View;
 
 import java.util.Scanner;
