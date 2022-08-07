@@ -70,11 +70,12 @@ public class ParsingServiceImpl implements ParsingService {
         }
     }
 
-    private void checkRepeatableElement(NodeList nodeList, int level, StringBuffer sb, int i, Node node) {
-        for (int j = i + 1; j < nodeList.getLength(); j++) {
-            Node nextNode = nodeList.item(j);
+    private void checkRepeatableElement(NodeList parentNodeList, int level, StringBuffer sb,
+                                        int nodeListElement, Node currentNode) {
+        for (int j = nodeListElement + 1; j < parentNodeList.getLength(); j++) {
+            Node nextNode = parentNodeList.item(j);
             if (isElementNode(nextNode)) continue;
-            if (nextNode.getNodeName().equals(node.getNodeName())) {
+            if (nextNode.getNodeName().equals(currentNode.getNodeName())) {
                 sb.append("\n").append(spaces(level)).append("-");
             }
             break;
