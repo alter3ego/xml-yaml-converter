@@ -8,8 +8,8 @@ import com.xml.yaml.converter.view.View;
 import java.util.Scanner;
 
 public class CommandManager {
-    public static final String ENTER_FILE_PATH = "enter.file.path";
-    public static final String EXIT = "exit";
+    private static final String ENTER_FILE_PATH = "enter.file.path";
+    private static final String EXIT = "exit";
     private final View view = ConsoleView.getInstance();
     private final Scanner scanner = new Scanner(System.in);
     private final CommandRegistry commandRegistry = CommandRegistry.getInstance();

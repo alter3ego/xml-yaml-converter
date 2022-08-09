@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class ExitCommand extends AbstractCommand {
 
-    public static final String GOODBYE = "goodbye";
+    private static final String GOODBYE = "goodbye";
 
     public ExitCommand(FileService fileService, View view, Scanner scanner) {
         super(fileService, view, scanner);

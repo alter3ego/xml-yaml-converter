@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ParsingServiceImplTest {
 
-    ParsingService parsingService = new ParsingServiceImpl();
+    private final ParsingService parsingService = new ParsingServiceImpl();
 
     @ParameterizedTest
     @MethodSource("testCases")
