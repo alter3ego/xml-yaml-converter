@@ -24,6 +24,7 @@ public class ParsingXmlToYamlCommand extends AbstractCommand {
             getView().printText(FILE_NOT_FOUND);
             return true;
         }
+
         try {
             getFileService().parsingXmlToYaml(path);
         } catch (AlreadyExistingYamlException e) {
@@ -31,6 +32,7 @@ public class ParsingXmlToYamlCommand extends AbstractCommand {
         } catch (FileSystemException e){
             getView().printText(FILE_SYSTEM_ERROR);
         }
+
         return true;
     }
 }

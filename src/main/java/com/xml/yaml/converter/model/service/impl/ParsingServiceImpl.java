@@ -15,9 +15,10 @@ import java.io.IOException;
 
 public class ParsingServiceImpl implements ParsingService {
 
-    public static final String START_YAML_FILE = "---\n";
-    public static final String START_REPEATABLE_PART = "%";
+    private static final String START_YAML_FILE = "---\n";
+    private static final String START_REPEATABLE_PART = "%";
 
+    @Override
     public String parseDoc(File file) {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         Document document;
@@ -39,18 +40,22 @@ public class ParsingServiceImpl implements ParsingService {
 
         for (int i = 0; i < nodeList.getLength(); i++) {
             Node node = nodeList.item(i);
-            if (isElementNode(node)) continue;
+            if (isElementNode(node)) {
+                continue;
+            }
+
             if (repeatablePart.equals(node.getNodeName())) {
                 sb.append(spaces(level)).append("-");
             } else {
                 sb.append(spaces(level)).append(node.getNodeName()).append(":");
                 checkRepeatableElement(nodeList, level, sb, i, node);
-
             }
+
             repeatablePart = node.getNodeName();
 
             if (node.hasAttributes()) {
                 NamedNodeMap attributes = node.getAttributes();
+
                 for (int j = attributes.getLength() - 1; j >= 0; j--) {
 
                     String attributeName = node.getAttributes().item(j).getNodeName();
@@ -60,11 +65,12 @@ public class ParsingServiceImpl implements ParsingService {
                             .append("\"-").append(attributeName)
                             .append("\": ").append(attributeValue);
                 }
-
             }
+
             if (node.getChildNodes().getLength() == 1) {
                 sb.append(" ").append(node.getTextContent());
             }
+
             sb.append("\n");
             returnChildNodes(node.getChildNodes(), level + 1, sb, repeatablePart);
         }
@@ -74,7 +80,10 @@ public class ParsingServiceImpl implements ParsingService {
                                         int nodeListElement, Node currentNode) {
         for (int j = nodeListElement + 1; j < parentNodeList.getLength(); j++) {
             Node nextNode = parentNodeList.item(j);
-            if (isElementNode(nextNode)) continue;
+
+            if (isElementNode(nextNode)) {
+                continue;
+            }
             if (nextNode.getNodeName().equals(currentNode.getNodeName())) {
                 sb.append("\n").append(spaces(level)).append("-");
             }

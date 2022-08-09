@@ -10,23 +10,38 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class FileServiceImpl implements FileService {
-    public static final String REGEX_YAML_SPLIT = "\\.";
-    public static final String YAML = ".yaml";
+
+    private static final String SAMPLE_XML = "sample.xml";
+    private static final String OUTPUT_YML = "output.yml";
 
     private final ParsingService parsingService = new ParsingServiceImpl();
 
     @Override
     public void parsingXmlToYaml(String path) {
-        String str = splitPathXmlToYaml(path);
+        String xmlPath = folderPath(path) + SAMPLE_XML;
+        String yamlPath = folderPath(path) + OUTPUT_YML;
+
         try {
-            parseXmlToNewYaml(path, str);
+            parseXmlToNewYaml(xmlPath, yamlPath);
         } catch (IOException e) {
             throw new FileSystemException();
         }
     }
 
-    private String splitPathXmlToYaml(String path) {
-        return path.split(REGEX_YAML_SPLIT)[0] + YAML;
+    @Override
+    public boolean existFile(String path) {
+        File file = new File(path);
+        return file.exists();
+    }
+
+    private String folderPath(String path) {
+        int index = path.lastIndexOf("/");
+
+        if (index == -1) {
+            index = path.lastIndexOf("\\");
+        }
+
+        return path.substring(0, index + 1);
     }
 
     private void parseXmlToNewYaml(String xmlPath, String ymlPath) throws IOException {
@@ -46,13 +61,8 @@ public class FileServiceImpl implements FileService {
     }
 
     private void uniqueYamlFile(String ymlPath) {
-        if (existFile(ymlPath))
+        if (existFile(ymlPath)) {
             throw new AlreadyExistingYamlException();
-    }
-
-    @Override
-    public boolean existFile(String path) {
-        File file = new File(path);
-        return file.exists();
+        }
     }
 }
