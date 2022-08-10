@@ -8,9 +8,9 @@ import com.xml.yaml.converter.view.View;
 import java.util.Scanner;
 
 public class ParsingXmlToYamlCommand extends AbstractCommand {
-    public static final String FILE_NOT_FOUND = "file.not.found";
-    public static final String YAML_ALREADY_EXIST = "yaml.already.exist";
-    public static final String FILE_SYSTEM_ERROR = "file.system.error";
+    private static final String FILE_NOT_FOUND = "file.not.found";
+    private static final String YAML_ALREADY_EXIST = "yaml.already.exist";
+    private static final String FILE_SYSTEM_ERROR = "file.system.error";
     private final String path;
 
     public ParsingXmlToYamlCommand(FileService fileService, View view, Scanner scanner, String path) {
